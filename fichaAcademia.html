@@ -1,0 +1,98 @@
+<meta charset="utf-8">
+
+<h1>Ficha Cadastral</h1>
+
+<script src="https://rawgit.com/caelum/projeto01/fichaAcademiaComInterfaceGrafica/apostilaIgnore/libBrasil.js">
+</script>
+<script src="https://rawgit.com/caelum/projeto01/fichaAcademiaComInterfaceGrafica/apostilaIgnore/mostra.js">
+</script>
+<script src="https://rawgit.com/caelum/projeto01/calculoIdade/apostilaIgnore/libIdade.js">
+</script>
+
+Nome
+<br>
+<input type="text" id="campoNome">
+<br><br>
+
+Sexo
+<select id="cboSexo">
+    <option disabled selected value>Selecione uma opção</option>
+    <option>Feminino</option> 
+    <option>Masculino</option>
+    <option>Não binário</option>
+    <option>Prefiro não declarar</option>
+</select>
+<br><br>
+
+Peso
+<br>
+<input type="text" id="campoPeso">
+<br><br>
+
+Altura
+<br>
+<input type="text" id="campoAltura">
+<br><br>
+
+Data de Nascimento
+<br>
+<input type="text" id="campoDataNascimento">
+<br><br>
+
+<input type="checkbox" id="CampoProblemasCardiacos">
+    Tem problemas cardíacos
+<br><br>
+
+<button onclick="criaFicha()">
+    Enviar
+</button>
+
+<script>
+    function criaFicha() {
+        let nome = campoNome.value
+        if (cboSexo.selectedIndex == 0) {
+            alert("Favor selecionar uma das opções")
+            return
+        }
+        let sexo = cboSexo.options[cboSexo.selectedIndex].text
+        let peso = parseFloatBrasil(campoPeso.value)
+        let altura = parseFloatBrasil(campoAltura.value)
+        let dataNascimento = campoDataNascimento.value
+
+        let dataNascimentoLista = dataNascimento.split("/")
+
+        let diaNascimento = dataNascimentoLista[0]
+        let mesNascimento = dataNascimentoLista[1]
+        let anoNascimento = dataNascimentoLista[2]
+
+        let idade = calculaIdade(diaNascimento, mesNascimento, anoNascimento)
+        let ehCrianca = idade < 16
+
+        let temProblemasCardiacos = CampoProblemasCardiacos.checked
+        let fraseAcompanhamentoMedico
+
+        if (temProblemasCardiacos || ehCrianca) {
+            fraseAcompanhamentoMedico = "Necessita acompanhamento médico"
+        } else {
+            fraseAcompanhamentoMedico = "Não necessita de acompanhamento médico"
+        }
+
+        mostra(`
+            <hr>
+            Nome: ${nome}
+            <br>
+            Sexo: ${sexo}
+            <br>
+            Peso: ${formataFloatBrasil(peso)} kg
+            <br>
+            Altura: ${formataFloatBrasil(altura)} m
+            <br>
+            Data de Nascimento: ${dataNascimento}
+            <br>
+            idade: ${idade} anos
+            <br>
+            ${fraseAcompanhamentoMedico}
+        `)
+
+    }
+</script>

@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+
+<h1>Interface Gráfica no HTML</h1>
+
+Nome
+<br>
+<input type="text" id="campoNome">
+<br><br>
+
+Data de Nascimento
+<br>
+<input type="date" id="campoDataNascimento">
+<br><br>
+
+<button onclick="criaCadastro()">
+    Enviar
+</button>
+
+<script>
+    function criaCadastro() {
+        let nome = campoNome.value
+        let dataNascimento = campoDataNascimento.value
+
+        document.write(`
+            <hr>
+            Nome: ${nome}
+            <br>
+            Data de Nascimento: ${dataNascimento}
+        `)
+    }
+</script>

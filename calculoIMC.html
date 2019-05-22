@@ -1,0 +1,33 @@
+<meta charset="utf8">
+
+<h1>Cálculo de IMC</h1>
+
+<script src ="https://rawgit.com/caelum/projeto01/fichaAcademiaComInterfaceGrafica/apostilaIgnore/libBrasil.js">
+</script>
+
+<script>
+    let peso = parseFloatBrasil(prompt("Qual o seu peso?"))
+    let altura = parseFloatBrasil(prompt("Qual a sua altura?"))
+
+    let imc = peso / (altura * altura)
+    let faixa
+
+    // Qual a faixa
+    if (imc < 18.5) {
+        faixa = "Abaixo do peso"
+    } else if (imc >= 18.5 && imc <= 24.9) {
+        faixa = "Peso normal"
+    } else if (imc >= 25 && imc <= 29.9) {
+        faixa = "Sobrepeso"       
+    } else if (imc >= 30 && imc <= 34.9) {
+        faixa = "Obesidade grau 1"
+    } else if (imc >= 35 && imc <= 39.9) {
+        faixa = "Obesidade grau 2"       
+    } else if (imc > 40) {
+        faixa = "Obesidade grau 3"
+    }
+
+    document.write("O seu IMC é " + formataFloatBrasil(imc) + "<br>")
+    document.write("Faixa: " + faixa)
+</script>
+        

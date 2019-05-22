@@ -1,0 +1,50 @@
+<meta charset="utf8">
+
+<h1>Uber Vs Carro (v2)</h1>
+
+<h2>Uber</h2>
+
+<script>
+    function pegaNumero(mensagem) {
+        return parseFloat(prompt(mensagem).replace(",", "."))
+    }
+</script>
+
+<script>
+    // Solicitar as informações
+    let distancia = pegaNumero("Qual a distância que será percorrida?")
+    //Efetuar os cálculos
+    const velocidadeMedia = 25.0
+    let tempoHoras = distancia / velocidadeMedia
+    let tempoMinutos = tempoHoras * 60
+    let totalUber = 2 + distancia * 1.4 + tempoMinutos * 0.26
+    // Exibir os resultados
+    document.write(`
+        Distância: ${distancia.toFixed(2).replace(".", ",")} km
+        <br>
+        Duração da viagem: ${tempoMinutos.toFixed(2).replace(".", ",")} minutos
+        <br>
+        Total do Uber: R$ ${totalUber.toFixed(2).replace(".", ",")}
+    `)
+</script>
+<br>
+
+<h2>Carro</h2>
+<script>
+    // Solicitar as informações
+    let totalGasolina = pegaNumero("Quanto irá gastar com gasolina?")
+    let totalEstacionamento = pegaNumero("Quanto irá gastar com estacionamento?")
+    let totalCarro = totalGasolina + totalEstacionamento
+    // Exibir os resultados
+    // document.write("Total Gasolina: R$ " + totalGasolina.toFixed(2).replace(".", ",") + "<br>")
+    // document.write("Total Estacionamento: R$ " + totalEstacionamento.toFixed(2).replace(".", ",") + "<br>")
+    // document.write("Total do Carro: R$ " + totalCarro.toFixed(2).replace(".", ",") + "<br>")
+
+    document.write(`
+        Total Gasolina: R$ ${totalGasolina.toFixed(2).replace(".", ",")}
+        <br>
+        Total Estacionamento: R$ ${totalEstacionamento.toFixed(2).replace(".", ",")}
+        <br>
+        Total do Carro: R$ ${totalCarro.toFixed(2).replace(".", ",")}
+    `)
+</script>

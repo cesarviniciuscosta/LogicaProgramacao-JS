@@ -1,0 +1,69 @@
+<meta charset="utf-8">
+
+<h1>Adivinhe um número entre 1 e 10</h1>
+
+<script src="https://rawgit.com/caelum/projeto01/fichaAcademiaComInterfaceGrafica/apostilaIgnore/mostra.js">
+</script>
+
+Quantos números quer sortear?
+<input type="text" id="campoQtdeNumeros">
+<br><br>
+
+Seu palpite
+<input type="number" id="campoPalpite">
+
+<button onclick="jogar()">
+    Jogar
+</button>
+
+<script>
+    let numeroJogo = 0
+    let contadorTentativas = 3
+
+    function jogar() {
+
+        do {
+
+            if (contadorTentativas == 0) {
+                alert("Você esgotou o número de tentativas. Compre mais fichas")
+                return
+            }
+
+            numeroJogo++
+
+            let listaNumerosMisteriosos = []
+
+            let numeroMisterioso = 0
+            let qtdeNumeros = campoQtdeNumeros.value
+            let contador = 1
+            while (contador <= qtdeNumeros) {
+                numeroMisterioso = parseInt(Math.random() * 10) + 1
+                if (listaNumerosMisteriosos.includes(numeroMisterioso)) { continue }
+                console.log(numeroMisterioso)
+                listaNumerosMisteriosos.push(numeroMisterioso)
+                contador++
+            }
+
+            let palpite = parseInt(campoPalpite.value)
+
+            while (palpite <= 0 || palpite > 10) {
+                alert("Favor digitar um número entre 1 e 10")
+                numeroJogo--
+                return
+            }
+
+            if (listaNumerosMisteriosos.includes(palpite)) {
+                mostra(`Jogo ${numeroJogo}: 
+            Acertou! O número sorteado era ${listaNumerosMisteriosos}`)
+            } else {
+                mostra(`Jogo ${numeroJogo}: 
+            Errou! O número sorteado era ${listaNumerosMisteriosos}`)
+            }
+
+            contadorTentativas--
+            mostra(` Você ainda tem ${contadorTentativas} tentativas
+                <br>`)
+
+        } while (contadorTentativas == 0)
+    }
+</script>

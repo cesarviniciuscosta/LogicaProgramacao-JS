@@ -1,0 +1,64 @@
+<meta charset="utf-8">
+
+<h1>Cálculo de Horas Extras</h1>
+
+<script src="procedural.js">
+</script>
+
+<script src="orientadoAObjetos.js">
+</script>
+
+<script src="https://rawgit.com/caelum/projeto01/fichaAcademiaComInterfaceGrafica/apostilaIgnore/libBrasil.js"></script>
+<script src="https://rawgit.com/caelum/projeto01/fichaAcademiaComInterfaceGrafica/apostilaIgnore/mostra.js"></script>
+
+Salário Base
+<br>
+<input type="text" id="campoSalarioBase">
+<br><br>
+
+Horas Extras
+<br>
+<input type="text" id="campoHorasExtras">
+<br><br>
+
+Taxa
+<br>
+<input type="text" id="campoTaxa">
+<br><br>
+
+<button onclick="calcularProcedural()">
+    Procedural
+</button>
+
+<button onclick="calcularOO()">
+    Orientado a Objetos
+</button>
+
+<script>
+
+    function calcularProcedural() {
+
+        salarioBase = parseFloatBrasil(campoSalarioBase.value)
+        horasExtras = parseFloatBrasil(campoHorasExtras.value)
+        taxa = parseFloatBrasil(campoTaxa.value)
+
+        let salarioCalculado = calculaSalarioFinal(salarioBase, horasExtras, taxa)
+
+        mostra(`<hr> Salário Final no Procedural ${formataFloatBrasil(salarioCalculado)}`)
+        
+    }
+</script>
+
+<script>
+
+    function calcularOO() {
+
+        colaborador.salarioBase = parseFloatBrasil(campoSalarioBase.value)
+        colaborador.horasExtras = parseFloatBrasil(campoHorasExtras.value)
+        colaborador.taxa = parseFloatBrasil(campoTaxa.value)
+
+        let salarioCalculado = colaborador.calculaSalarioFinal()
+        mostra(`<hr> Salário Final na OO ${formataFloatBrasil(salarioCalculado)}`)
+        
+    }
+</script>

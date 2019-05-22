@@ -1,0 +1,42 @@
+<meta charset="utf8">
+
+<h1>Ficha da Academia</h1>
+
+<script src = "https://rawgit.com/caelum/projeto01/calculoIdade/apostilaIgnore/libIdade.js">
+</script>
+
+<script src="pegaNumero.js">
+</script>
+
+<script src="retornaNumero.js">
+</script>
+
+</script>
+
+<script>
+    let nome = prompt("Qual o seu nome:")
+    let peso = pegaNumero("Qual o seu peso?")
+    let altura = pegaNumero("Qual a sua altura?")
+    let dataNascimento = prompt("Qual sua data de nascimento?")
+
+    // Calcula a idade
+    let dataNascimentoLista = dataNascimento.split("/")
+    let diaNascimento = dataNascimentoLista[0]
+    let mesNascimento = dataNascimentoLista[1]
+    let anoNascimento = dataNascimentoLista[2]
+    let idade = calculaIdade(diaNascimento, mesNascimento, anoNascimento)
+    
+    document.write(`
+        <hr>
+        Nome: ${nome}
+        <br> 
+        Peso: ${retornaNumero(peso)} kg
+        <br>
+        Altura: ${retornaNumero(altura)} m
+        <br>
+        Data de Nascimento: ${dataNascimento}
+        <br>
+        Sua idade é: ${idade} anos
+    `)
+</script>
+        
